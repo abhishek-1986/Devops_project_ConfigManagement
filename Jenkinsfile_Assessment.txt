@@ -97,10 +97,9 @@ pipeline{
 		     }
 		    
 		  stage ('Docker-Run'){
+		  	agent any
 			steps{
-				sh """
-				docker run -p 8888:8080 centos03021986/addressbookapp:v1 &
-				"""
+				sh 'docker run -p 8888:8080 centos03021986/addressbookapp:v1 &'
 			}
 					 
 		     }
