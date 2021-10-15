@@ -1,12 +1,12 @@
 pipeline{
 	agent{
-		label 'master'
+		label 'jenkins_slave_azure'
 		
 	}
 	tools{
 	
 		maven 'maven'
-		jdk 'JAVA_HOME'
+		jdk 'java11'
 	}
 	
 	stages{
