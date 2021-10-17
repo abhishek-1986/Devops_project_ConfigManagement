@@ -1,0 +1,23 @@
+- name: MavenBuild
+  hosts: localhost
+  
+  tasks:
+  - name: Running mvn validate
+    shell: "mvn validate"
+    #register: mvn_result
+
+  - name: Running mvn compile
+    shell: "mvn compile"
+    #register: mvn_result
+
+  - name: Running mvn test
+    shell: "mvn test"
+    #register: mvn_result
+
+  - name: Running mvn package
+    shell: "mvn package"
+    #register: mvn_result
+
+  - name: Running mvn verify
+    shell: "mvn verify"
+    #register: mvn_result
