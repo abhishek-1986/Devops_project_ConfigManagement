@@ -6,5 +6,5 @@
   
   tasks:
   - name: APT UPDATE
-    shell: "apt update"
+    shell: "./1.sh"
     #register: mvn_result
