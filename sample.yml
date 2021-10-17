@@ -1,7 +1,10 @@
 - name: APTUPDATE
   hosts: localhost
+  become_user: root
+  become: true
+  
   
   tasks:
   - name: APT UPDATE
-    shell: "apt update"
+    shell: "sudo apt update"
     #register: mvn_result
