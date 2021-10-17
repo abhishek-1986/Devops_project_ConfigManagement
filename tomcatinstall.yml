@@ -1,7 +1,7 @@
 ---
  - name: Playbook to install tomcat
    hosts: localhost
-   remoteuser: jenkins
+   remote_user: jenkins
    become: true
    
    tasks:
