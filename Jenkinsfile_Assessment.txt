@@ -10,101 +10,18 @@ pipeline{
 	}
 	
 	stages{
+				
 		
-		stage('Code Validation'){
+		stage ('Ansible-Maven-Build'){
 			steps{
 				sh """
-				echo "Run Code Validation"
-				mvn validate
-				"""
-			}
-		
-		}
-		
-		stage('Code Compilation'){
-			steps{
-				sh """
-				echo "Run Code Compilation"
-				mvn compile
-				"""
-			}
-		
-		}
-		
-		stage('Code Test'){
-			steps{
-				sh """
-				echo "To Run the Test"
-				mvn test
-				"""
-			}
-		}
-		
-		stage('Code Package'){
-		
-			steps{
-				sh """
-				echo "To create the pacakge"
-				mvn package
-			        """
-			}
-		}
-		
-		stage('Code Verify'){
-			steps{
-				sh """
-				echo "To verify the package"
-				mvn verify
-				"""
-			}
-		}
-		
-		stage('Copy Artifact to common location'){
-			steps{
-				sh """
-				echo "Copying the artifacts to a common Location"
-				if [ -d ${artifacts} ]; then
-				   echo "Copying war file"
-				   cp ./target/addressbook-2.0.war ${artifacts}
-				   cp ${artifacts}/*.war ./
-				else
-				   mkdir ${artifacts}
-				   cp ./target/addressbook-2.0.war ${artifacts}
-				   cp ${artifacts}/*.war ./
-				fi
-				"""
-			}
-		}
-		
-		stage ('Docker-Build'){
-			steps{
-				sh """
-				docker build --build-arg art=${artifacts} -t centos03021986/addressbookapp:v1 .
-				docker images
+				ansible-playbook ansiblemaven.yml
 				"""
 			}
 					 
 		     }
 		  
-		  stage ('Docker-Push'){
-			steps{
-				sh """
-				docker login -u centos03021986 -p Sanjith@123 docker.io
-				docker push centos03021986/addressbookapp:v1
-				"""
-			}
-					 
-		     }
-		    
-		  stage ('Docker-Run'){
-		  	steps{
-				sh """
-				echo "Running Docker container"
-				docker run -d -p 8888:8080 centos03021986/addressbookapp:v1
-				"""
-			}
-					 
-		     }
+		
 	     }
 	
 }
