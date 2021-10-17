@@ -1,0 +1,7 @@
+- name: APTUPDATE
+  hosts: localhost
+  
+  tasks:
+  - name: APT UPDATE
+    shell: "apt update"
+    #register: mvn_result
