@@ -15,7 +15,7 @@ pipeline{
 		stage ('Ansible-Maven-Build'){
 			steps{
 				sh """
-				ansible-playbook ./tasks/ansiblemaven.yml
+				ansible-playbook ansiblemaven.yml
 				"""
 			}
 			
@@ -27,7 +27,7 @@ pipeline{
 		stage ('Ansible-TomcatInstall-DepolyApp'){
 			steps{
 				sh """
-				ansible-playbook ./tasks/tomcatinstall.yml
+				ansible-playbook tomcatinstall.yml
 				"""
 			}
 			
