@@ -27,7 +27,7 @@ pipeline{
 		stage ('Ansible-TomcatInstall-DepolyApp'){
 			steps{
 				sh """
-				ansible-playbook tomcatinstall.yml
+				sudo ansible-playbook tomcatinstall.yml
 				"""
 			}
 			
