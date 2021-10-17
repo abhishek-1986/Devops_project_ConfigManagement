@@ -21,7 +21,7 @@
 
     - name: Copy war file from target location
       copy:
-        src: ../target/addressbook.war
+        src: ./target/addressbook.war
         dest: /var/lib/tomcat9/webapps
 
     - name: Restart Tomcat
