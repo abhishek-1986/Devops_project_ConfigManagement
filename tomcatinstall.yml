@@ -1,7 +1,7 @@
 ---
  - name: Playbook to install tomcat
    hosts: localhost
-   become: true
+   
    tasks:
     - name: Tomcat remove if already isntalled
       apt:
