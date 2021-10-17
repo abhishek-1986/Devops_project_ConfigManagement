@@ -2,15 +2,31 @@
  - name: Playbook to install tomcat
    hosts: localhost
    become: true
-   tasks: 
+   tasks:
+    - name: Tomcat remove if already isntalled
+      apt:
+        name: tomcat9
+        state: absent
+
     - name: Apt Get Update
-      shell: "apt get update"
+      shell: "apt update"
 
     - name: Apt Search tomcat
-      shell: "apt cache search tomcat"
+      shell: "apt-cache search tomcat"
 
     - name: Ansible apt install tomcat
       apt:
         name: tomcat9
         state: present
-    -
+
+    - name: Copy war file from target location
+      copy:
+        src: ../target/addressbook.war
+        dest: /var/lib/tomcat9/webapps
+
+    - name: Restart Tomcat
+      systemd:
+        name: tomcat9
+        enabled: yes
+        state: restarted
+        become: true
