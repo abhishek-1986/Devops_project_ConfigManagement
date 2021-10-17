@@ -1,28 +1,29 @@
 ---
  - name: Playbook to install tomcat
    hosts: localhost
+   remoteuser: jenkins
    become: true
    
    tasks:
     - name: Apt Get Update
       shell: "sudo apt update"
-      become: true
+      #become: true
 
     - name: Apt Search tomcat
       shell: "sudo apt-cache search tomcat"
-      become: true
+      #become: true
 
     - name: Ansible apt install tomcat
       apt:
         name: tomcat9
         state: present
-        become: true
+       #become: true
 
     - name: Copy war file from target location
       copy:
         src: ./target/addressbook.war
         dest: /var/lib/tomcat9/webapps
-        become: true
+        #become: true
 
     - name: Restart Tomcat
       systemd:
