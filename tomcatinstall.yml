@@ -2,7 +2,7 @@
  - name: Playbook to install tomcat
    hosts: localhost
    become_user: root
-   become_method: su
+   #become_method: su
    become: true
    
    tasks:
