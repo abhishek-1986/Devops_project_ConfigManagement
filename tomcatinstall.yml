@@ -3,11 +3,6 @@
    hosts: localhost
    
    tasks:
-    - name: Tomcat remove if already isntalled
-      apt:
-        name: tomcat9
-        state: absent
-
     - name: Apt Get Update
       shell: "apt update"
 
