@@ -6,5 +6,5 @@
   
   tasks:
   - name: APT UPDATE
-    shell: "sudo apt update"
+    shell: "apt update"
     #register: mvn_result
