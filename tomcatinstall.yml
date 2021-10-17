@@ -4,10 +4,10 @@
    
    tasks:
     - name: Apt Get Update
-      shell: "apt update"
+      shell: "sudo apt update"
 
     - name: Apt Search tomcat
-      shell: "apt-cache search tomcat"
+      shell: "sudo apt-cache search tomcat"
 
     - name: Ansible apt install tomcat
       apt:
