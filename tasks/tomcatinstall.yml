@@ -1,0 +1,16 @@
+---
+ - name: Playbook to install tomcat
+   hosts: localhost
+   become: true
+   tasks: 
+    - name: Apt Get Update
+      shell: "apt get update"
+
+    - name: Apt Search tomcat
+      shell: "apt cache search tomcat"
+
+    - name: Ansible apt install tomcat
+      apt:
+        name: tomcat9
+        state: present
+    -
