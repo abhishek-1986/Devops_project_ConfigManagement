@@ -15,7 +15,8 @@ pipeline{
 		stage ('Ansible-Maven-Build'){
 			steps{
 				sh """
-				ansible-playbook ansiblemaven.yml
+				//ansible-playbook ansiblemaven.yml
+				echo "Hellow"
 				"""
 			}
 			
